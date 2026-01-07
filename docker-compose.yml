@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      context: .
+    restart: unless-stopped
+    volumes:
+      - caddy_data:/caddy
+    ports:
+      - "3000:3000"
+      - "443:443"
+    env_file:
+      - path: .env
+        required: true
+      - path: .env.local
+        required: false
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+    labels:
+      - dev.orbstack.http-port=3000
+
+volumes:
+  caddy_data:

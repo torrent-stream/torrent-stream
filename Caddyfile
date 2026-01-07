@@ -1,0 +1,7 @@
+{$DOMAIN_NAME} {
+    reverse_proxy localhost:3000
+
+    tls {
+        dns duckdns {env.DUCKDNS_TOKEN}
+    }
+}
